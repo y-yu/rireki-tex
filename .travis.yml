@@ -1,0 +1,19 @@
+os:
+  - linux
+dist: trusty
+language: generic
+sudo: false
+before_install:
+  - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
+  - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/tlmgr.sh
+  - chmod +x install-tex.sh tlmgr.sh
+install:
+  - . ./install-tex.sh
+  - ./tlmgr.sh install collection-fontsrecommended collection-langjapanese
+script:
+  - make
+after_success:
+  - ./deploy.sh
+env:
+  global:
+    secure: zr8sZqhnDdrnanN76r7nNbqvu2G5ZU7vJZvtByE/ZqPj8/ZmlZSTmOn0xuROtV8P5k1zVxzx9agyk6TCP0x21/vcZDbgAnOh5ABsyGMrjaMSEclgVCeIaAXMLstkRmgDMGuS90qmkqfBe3w6pcx4/07gZLj/YYt+5RTs8vo4+rbBzEGBHN9dGa7rAQxsoBL7bW+ztv1e3zbDqR/ZKEyyWc1fO9+DmIoQkq4G7JHY4+DaNVdEEvWUHFicBpmEQg38f1bfVi7xfY65w2aXgQjrOoQqiCxhq6hZt/XUI9oGJqMZI2I3GRAvz/N9vh78h2j26M5UdF+n81XYtW43LzYyj2zsfjjE94snTyrw1qAzre/1RgjS+UW7/+Fzgyi8Sl/rGBuBTnSEpHf+rhBamd+m8H9ngmG0qPCeXkrZfU5BeGR10sIZ5hI2vAW++tNQ+BzBmWretlqW0CSC4dL4ZS2YDJb1LETAOzdFD380tJihIzSv+9uj4WqA5W+dDjhYLdStzpxjmK1V0J161t2piyyDyer62o8KJ0Wza/m3FGEgt7gjiNMNiKM0xZnOBnj4dTZYVGopoURXjXgXUjfiX5yBd3dryalMDWpUjJJUSSbW6fkcccQl8yQxTULBlv5FWLthT+wMlD9UtL7lwAFRZUL1peKXHfHUtYmXaqItdGisroQ=
